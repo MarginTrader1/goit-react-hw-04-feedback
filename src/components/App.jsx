@@ -27,16 +27,18 @@ export const App = () => {
   // создаем функцию addFeedback, которая по велью вызывает соответствующую функцию из объекта функций
   const addFeedback = value => feedbackFunctions[value]();
 
-  if (good > 0 || neutral > 0 || bad > 0) {
-    return (
-      <>
-        <SectionTitle title="Please leave feedback">
-          <Feedback
-            // в пропс передаем объект, чтобы по ключам его перебрать
-            data={{ good: good, neutral: neutral, bad: bad }}
-            addFeedback={addFeedback}
-          />
-        </SectionTitle>
+  return (
+    <>
+      <SectionTitle title="Please leave feedback">
+        <Feedback
+          // в пропс передаем объект, чтобы по ключам его перебрать
+          data={{ good: good, neutral: neutral, bad: bad }}
+          addFeedback={addFeedback}
+        />
+      </SectionTitle>
+
+      {/* тернарник -> если есть фидбэки -> рендерим компонент Statistics*/}
+      {good > 0 || neutral > 0 || bad > 0 ? (
         <SectionTitle title="Statistic">
           <Statistics
             good={good}
@@ -46,22 +48,12 @@ export const App = () => {
             positivePercentage={feedbackFunctions.positivePercentage}
           />
         </SectionTitle>
-      </>
-    );
-    // если фидбэков нет -> рендерим компонент Notification
-  } else {
-    return (
-      <>
-        <SectionTitle title="Please leave feedback">
-          <Feedback
-            data={{ good: good, neutral: neutral, bad: bad }}
-            addFeedback={addFeedback}
-          />
-        </SectionTitle>
+      ) : (
+        // если фидбэков нет -> рендерим компонент Notification
         <SectionTitle>
           <Notification title="There is no feedback" />
         </SectionTitle>
-      </>
-    );
-  }
+      )}
+    </>
+  );
 };
