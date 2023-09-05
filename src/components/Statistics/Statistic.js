@@ -21,10 +21,10 @@ export const Statistics = ({
           <b>Bad:</b> {bad}
         </Li>
         <Li key={nanoid()}>
-          <b>Total:</b> {total(good, neutral, bad)}
+          <b>Total:</b> {total()}
         </Li>
         <Li key={nanoid()}>
-          <b>Positive feedback:</b> {positivePercentage(good, neutral, bad)}%
+          <b>Positive feedback:</b> {positivePercentage()}%
         </Li>
       </ul>
     </>
