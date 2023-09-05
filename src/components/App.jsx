@@ -5,6 +5,7 @@ import { Statistics } from './Statistics/Statistic';
 import { Feedback } from './FeedBackOptions/FeedBackOptions';
 import { Notification } from './Notification/Notification';
 
+// делаем хуки под кнопки
 export const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
@@ -31,6 +32,7 @@ export const App = () => {
       <>
         <SectionTitle title="Please leave feedback">
           <Feedback
+            // в пропс передаем объект, чтобы по ключам его перебрать
             data={{ good: good, neutral: neutral, bad: bad }}
             addFeedback={addFeedback}
           />
