@@ -2,6 +2,10 @@ import { List, Li, Button } from './FeedBackOptions.styled';
 import { nanoid } from 'nanoid';
 
 export const Feedback = ({ addFeedback, data }) => {
+
+
+
+  
   return (
     <>
       <List>
